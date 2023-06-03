@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+</head>
+<body>
+<h3>Article Detail</h3>
+<div>
+  <a href="/article/list">
+    Back to customer list
+  </a>
+</div>
+
+<div id="form">
+  <form action="#" th:object="${article}">
+    <div>
+      <label>ID
+        <input type="text" th:field="*{id}" readonly>
+      </label>
+    </div>
+    <div>
+      <label>Title
+        <input type="text" th:field="*{title}" readonly>
+      </label>
+    </div>
+    <div>
+      <label>Content
+        <input type="text" th:field="*{content}" readonly>
+      </label>
+    </div>
+    <div>
+      <label>Created/Last Modified Date
+        <input type="text" th:field="*{createdDate}" readonly>
+      </label>
+    </div>
+  </form>
+</div>
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>

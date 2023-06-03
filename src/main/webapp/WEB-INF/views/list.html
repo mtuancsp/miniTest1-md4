@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layout :: head">
+</head>
+
+<body>
+
+<h3>Articles</h3>
+<p>
+    <a href="create">Add new article</a>
+</p>
+
+<div class="notify" th:if="${notify}">
+    <p th:text="${notify}"></p>
+</div>
+
+<form method="post" action="search" style="text-align: center">
+    <label>
+        <input th:value="${search}" type="search" id="search" name="search" placeholder="Search" oninput="submit()">
+        <button>Search</button>
+    </label>
+</form>
+<br>
+
+<table id="articles">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Created/Last Modified Date</th>
+        <th colspan="3" style="text-align: center">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="article : ${articles}">
+            <td th:text="${article.id}"></td>
+            <td th:text="${article.title}"></td>
+            <td th:text="${article.content}"></td>
+            <td th:text="${article.createdDate}"></td>
+            <td><a style="color: green" th:href="@{/article/edit/id={id}(id=${article.id})}">Edit</a></td>
+            <td><a style="color: red" th:href="@{/article/delete/id={id}(id=${article.id})}" onclick="return confirm('Are you sure?')">Delete</a></td>
+            <td><a style="color: blue" th:href="@{/article/detail/id={id}(id=${article.id})}">Detail</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<footer th:replace="layout :: footer"></footer>
+
+</body>
+
+</html>
